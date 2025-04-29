@@ -1,0 +1,460 @@
+html {
+  scroll-behavior: smooth;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #0d0d0d;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    
+  }
+  /* Fundo animado*/
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent url("https://static.vecteezy.com/system/resources/thumbnails/006/160/842/small/night-starry-skies-with-white-blinking-stars-video.jpg") repeat;
+    animation: animarEstrelas 60s linear infinite;
+    z-index: -1;
+    opacity: 0.3;
+  }
+  
+  @keyframes animarEstrelas {
+    from { background-position: 0 0; }
+    to { background-position: 10000px 10000px; }
+  }
+/* Fundo animado FIM*/
+
+/* Parallax*/
+  .parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120vh;
+    background: url("https://static.vecteezy.com/system/resources/thumbnails/006/160/842/small/night-starry-skies-with-white-blinking-stars-video.jpg") repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    z-index: -2;
+    opacity: 0.2;
+  }
+  /*Parallax FIM*/
+
+  /*Header*/
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 30px;
+  }
+
+  header h1 {
+    font-size: 3em;
+    color: #00bfff;
+  }
+  /*Header FIM*/
+
+  /*TimeLine*/
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .timeline-item {
+    display: flex;
+    margin-bottom: 30px;
+  }
+ 
+  .timeline-date {
+    color: #fcfcfc;
+    padding: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 60px;
+  }
+  
+  .timeline-content {
+    background-color: #ffffff1c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+  /*TimeLine FIM*/
+
+  /*Card dos planetas*/
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+  }
+
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  .card h2 {
+    color: #00bfff;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 0.95em;
+    line-height: 1.5em;
+    color: #ccc;
+  }
+
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2em;
+    }
+  }
+  /*Card dos planetas FIM*/
+
+  /*Tabela dos planetas*/
+  .tabela-planetas {
+    padding: 40px 20px;
+    color: #fff;
+    text-align: center;
+    width: 1500px;
+    justify-self: center;
+  }
+  
+  .tabela-planetas h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #00bfff;
+  }
+  
+  .tabela-wrapper {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    min-width: 600px;
+  }
+  
+  th, td {
+    border: 1px solid #333;
+    padding: 12px 16px;
+    text-align: center;
+  }
+  
+  th {
+    color: #00bfff;
+  }
+
+  tbody tr:hover {
+    background-color: #333;
+    transition: 0.3s;
+  }
+  /*Tabela dos planetas FIM*/
+
+  /*Curiosidades*/
+  .curiosidades {
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .curiosidades h2 {
+    font-size: 2rem;
+    color: #00bfff;
+    margin-bottom: 30px;
+  }
+  
+  .curiosidade-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Card flip*/
+  .flip-card {
+    background: transparent;
+    width: 250px;
+    height: 180px;
+    perspective: 1000px; /* profundidade para o efeito 3D */
+  }
+  
+  /* Caixa interna que vai girar */
+  .flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Gira ao passar o mouse */
+  .flip-card:hover .flip-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Frente e verso */
+  .flip-front, .flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .flip-front h3 {
+    color: #00bcd4;
+    margin-bottom: 10px;
+  }
+  
+  .flip-back {
+    transform: rotateY(180deg);
+    color: #00ffff;
+  }
+  /*Curiosidades FIM*/
+
+  /*Galeria*/
+  .galeria {
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .galeria h2 {
+    font-size: 2rem;
+    color: #00bfff;
+    margin-bottom: 30px;
+  }
+  
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
+  .galeria-grid img {
+    width: 360px;
+    height: 360px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+  }
+  
+  .galeria-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
+  }
+  /*Galeria FIM*/
+
+  /*QUIZ*/
+  .quiz-box {
+    max-width: 500px;
+    margin: auto;
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+   
+  }
+
+  .question {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .option {
+    background: #262626;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .option:hover {
+    background: #00e5ff;
+    color: #000;
+  }
+
+  .result {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  .titulo-pergunta{
+    text-align: center;
+    margin-bottom: 50px;
+    color: #00bfff;
+  }
+  /*QUIZ FIM*/
+
+  .novo-topico {
+    text-align: center;
+    margin-top: 150px;
+  }
+
+  .novo-topico h1{
+    color: #00bfff;
+    font-size: 50px;
+  }
+
+  /*Animação sistema solar*/
+  .sistema {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+  }
+
+  .sol {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin: -50px 0 0 -50px;
+    background: radial-gradient(circle, #ffcc00, #ff9900);
+    border-radius: 50%;
+    box-shadow: 0 0 50px 20px #ffaa00;
+    z-index: 10;
+  }
+
+  .orbita {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 2px dashed rgba(255, 255, 255, 0.137);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: girar linear infinite;
+    z-index: 1;
+  }
+
+  .planeta {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  .nome {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    transition: opacity 0.3s ease;
+    
+  }
+
+ 
+
+  @keyframes girar {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* Tamanhos e velocidades diferentes para cada planeta */
+  .orbita.mercurio { width: 120px; height: 120px; animation-duration: 6s; }
+  .orbita.venus    { width: 160px; height: 160px; animation-duration: 9s; }
+  .orbita.terra    { width: 210px; height: 210px; animation-duration: 12s; }
+  .orbita.marte    { width: 270px; height: 270px; animation-duration: 15s; }
+  .orbita.jupiter  { width: 340px; height: 340px; animation-duration: 18s; }
+  .orbita.saturno  { width: 420px; height: 420px; animation-duration: 21s; }
+  .orbita.urano    { width: 500px; height: 500px; animation-duration: 24s; }
+  .orbita.netuno   { width: 580px; height: 580px; animation-duration: 27s; }
+
+  /* Cores dos planetas */
+  .mercurio .planeta { background: #a6a6a6; }
+  .venus    .planeta { background: #ffaa00; }
+  .terra    .planeta { background: #00ccff; }
+  .marte    .planeta { background: #ff4444; }
+  .jupiter  .planeta { background: #d4af37; width: 30px; height: 30px; margin-left: -15px; }
+  .saturno  .planeta { background: #deb887; width: 26px; height: 26px; margin-left: -13px; }
+  .urano    .planeta { background: #80ffff; width: 22px; height: 22px; margin-left: -11px; }
+  .netuno   .planeta { background: #4169e1; width: 22px; height: 22px; margin-left: -11px; }
+
+  footer {
+    background: #1a1a1a;
+    color: #eee;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 30px;
+  }
+
+.voltar a{
+  text-decoration: none;
+  color: rgb(0, 183, 255);
+  font-size: 20px;
+  font-weight: bolder;
+  border-radius: 30px;
+  padding: 10px 10px;
+  transition: background-color 1s;
+}
+
+.voltar a:hover{
+  background-color: rgba(255, 255, 255, 0.411);
+
+}
+
+
+
